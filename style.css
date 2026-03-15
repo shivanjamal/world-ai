@@ -1,0 +1,645 @@
+html {
+    scroll-behavior: smooth; /* بۆ جوڵەی نەرمی سکڕۆڵ */
+}
+
+body {
+    background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%); /* پاشبنمایێ گرێدیەنت */
+    color: white;
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    overflow-x: hidden;
+    /* ڕێگری ل دیارکرنا نڤیسینان */
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10+ */
+    user-select: none; /* Standard syntax */
+    touch-action: pan-y; /* ڕێگری ل زوومکرنێ دکەت لسەر مۆبایلێ */
+}
+
+/* --- Particle Background --- */
+#ai-network {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* دەچێتە پشتەوەی هەموو شتێک */
+    pointer-events: none; /* ڕێگری لە کلیک ناکات */
+}
+
+/* پشکا لۆگۆی دکەتە سەنتەر */
+.hero-section {
+    height: 80px; /* کرە ناڤبارەکێ کورت */
+    position: fixed; /* جێگیرکرن ل سەرێ لاپەڕی */
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between; /* لایێ چەپێ و ڕاستێ */
+    align-items: center; 
+    padding: 0 40px;
+    background: rgba(15, 23, 42, 0.65); /* پاشبنمایێ تاریکتر بۆ شوشەیی */
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08); /* هێڵێکی ناسک */
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2); /* سێبەری مۆدێرن */
+    transition: all 0.4s ease; /* جوڵەی نەرم بۆ بچووکبوونەوە */
+    z-index: 1000;
+    box-sizing: border-box;
+}
+
+/* ستایل بۆ wrapperـێ لۆگۆی */
+.logo-wrapper {
+    display: flex;
+    flex-direction: row; /* تەنیشت یەک */
+    align-items: center; 
+    gap: 15px;
+}
+
+/* قەبارێ لۆگۆی */
+/* ستایل بۆ لۆگۆ */
+.main-logo {
+    width: 50px; /* بچووککرنا لۆگۆی */
+    height: 50px;
+    transition: all 0.4s ease;
+}
+
+/* دیزاینا ناڤێ مالپەری */
+
+/* ستایل بۆ ناڤێ مالپەری */
+.site-title {
+    font-size: 1.5rem;
+        margin-top: 0;
+    background: linear-gradient(90deg, #c084fc, #6366f1);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 30px rgba(139, 92, 246, 0.3);
+    font-weight: bold;
+    transition: all 0.4s ease;
+    position: relative; /* پێویستە بۆ جێگیرکردنی Glitch Layers */
+    
+}
+
+
+
+
+/* --- دوگمەی سکڕۆڵ بۆ خوا��ێ --- */
+.lottie-scroll-btn {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    display: none; /* ڤەشارتنا دوگمەیێ سکڕۆڵ */
+}
+
+/* کارتێن خوارێ */
+.container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    padding: 30px 50px 50px 50px;
+    perspective: 1000px;
+}
+
+/* --- ستایلێ بەشێ دەربارەی (About Section) --- */
+.about-section {
+    padding: 110px 20px 10px 20px; /* Padding-top بۆ ئەوەی نەچێتە ژێر ناڤبار */
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+.about-section h2 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+    color: #fff;
+    font-weight: bold;
+}
+.about-section p {
+    color: #cbd5e1;
+   font-size: 1.1rem;
+    line-height: 1.6;
+}
+.shvan-name {
+    color: #8b5cf6;
+    font-weight: bold;
+    text-shadow: 0 0 10px rgba(139, 92, 246, 0.4);
+}
+
+/* --- Filter Buttons Style --- */
+.filter-container {
+    text-align: center;
+    margin-bottom: 10px;
+    padding: 0 20px;
+}
+.filter-btn {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #e2e8f0;
+    padding: 12px 24px;
+    margin: 6px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.filter-btn:hover {
+    background: rgba(255, 255, 255, 0.25);
+    border-color: rgba(255, 255, 255, 0.5);
+    transform: translateY(-2px);
+    color: white;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+.filter-btn.active {
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.9), rgba(99, 102, 241, 0.9));
+    color: white;
+    border-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 0 20px rgba(139, 92, 246, 0.6);
+}
+
+/* --- New 3D Card Styles --- */
+.font-serif-display {
+    font-family: 'Playfair Display', serif;
+}
+
+.card-container {
+    position: relative;
+    display: block;
+    width: 100%;
+    /* max-width: 380px; لابردنی سنوور بۆ ئەوەی لە گریددا باش دەربکەوێت */
+    aspect-ratio: 9 / 14; /* درێژی کارتەکە */
+    border-radius: 1.75rem;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    box-shadow:
+        0 0 0 2px rgba(255, 214, 102, 0.1), /* بۆردەری تەنک */
+        0 0 25px 8px rgba(0, 0, 0, 0.3);
+    transform-style: preserve-3d;
+    cursor: pointer;
+    will-change: box-shadow, background-size;
+    transition: box-shadow 0.3s ease; /* خێراتر بۆ جوڵەی سێبەر */
+}
+
+.card-container:hover {
+    box-shadow:
+        0 0 0 3px rgba(139, 92, 246, 0.6), /* ڕەنگی مۆر بۆ هۆڤەر */
+        0 0 35px 12px rgba(139, 92, 246, 0.25);
+}
+
+.card-container:active {
+    box-shadow:
+        0 0 0 4px rgba(139, 92, 246, 1), /* گەشتر لە کاتی کلیک */
+        0 0 50px 20px rgba(139, 92, 246, 0.6); /* ڕووناکیەکە زیاتر دەبێت */
+}
+
+.inner-border-overlay {
+    position: absolute;
+    inset: 14px;
+    border-radius: 1.375rem;
+    pointer-events: none;
+    z-index: 10;
+    box-shadow:
+        inset 0.5px 0.5px 1.5px rgba(255, 255, 255, 0.2),
+        inset -1px -1px 1px rgba(0, 0, 0, 0.2);
+    transform: translateZ(30px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.content-area {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    z-index: 5;
+    transform: translateZ(60px);
+}
+
+.gradient-overlay {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 85%;
+    background: linear-gradient(to top, rgba(15, 23, 42, 0.95) 0%, rgba(15, 23, 42, 0.6) 50%, transparent 100%);
+    pointer-events: none;
+    z-index: -1;
+}
+
+.elevation-badge {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    background: rgba(139, 92, 246, 0.9); /* ڕەنگی مۆر */
+    border-radius: 9999px;
+    padding: 0.5rem 1rem;
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 600;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    transform: translateZ(50px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.text-block {
+    color: #f8fafc;
+    text-align: center;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    transform: translateZ(25px);
+    margin-bottom: 15px;
+}
+
+.tour-button {
+    position: relative;
+    z-index: 20;
+    background: linear-gradient(145deg, #8b5cf6, #6366f1);
+    color: white;
+    font-weight: 600;
+    padding: 0.75rem 1.5rem;
+    border-radius: 9999px;
+    text-align: center;
+    text-decoration: none;
+    width: auto;
+    margin: 0 auto 1.5rem auto;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+    transform: translateZ(40px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.tour-button:hover {
+    transform: translateZ(40px) scale(1.05);
+    box-shadow: 0 6px 20px rgba(139, 92, 246, 0.6);
+}
+
+/* --- ستایلێن تایبەت بۆ مۆبایلان --- */
+@media (max-width: 768px) {
+    .container {
+        padding: 30px 15px 50px 15px;
+        grid-template-columns: 1fr; /* ١ کارت د هەر ڕێزەکێ دا بۆ دیزاینەکا جوانتر و ڕوونتر */
+        gap: 20px; /* زێدەکرنا بۆشایی */
+    }
+
+    .hero-section {
+        padding: 0 15px; /* بچووککرنەوەی پەراوێزی ناڤبار بۆ شاشەی مۆبایل */
+    }
+
+    /* بچووککرنا قەبارێ لۆگۆی و ناڤی بۆ مۆبایلێ */
+    .main-logo {
+        width: 40px;
+        height: 40px;
+    }
+    .site-title {
+        font-size: 1.2rem;
+    }
+
+    /* گونجاندنا نڤیسینێن ناڤ کارتان دا */
+    .text-block h1 {
+        font-size: 2rem; /* ناڤێ کارتی */
+    }
+    .text-block p {
+        font-size: 0.95rem; /* وەسف */
+    }
+    .tour-button {
+        padding: 0.7rem 1.4rem;
+        font-size: 0.95rem;
+    }
+    .elevation-badge {
+        padding: 0.5rem 1rem;
+        font-size: 0.75rem;
+    }
+
+    .about-section h2 {
+        font-size: 1.5rem;
+    }
+    .about-section p {
+        font-size: 0.9rem;
+    }
+
+    .filter-container {
+        display: flex;
+        overflow-x: auto; /* Allow horizontal scrolling */
+        padding-bottom: 10px;
+        touch-action: pan-x;
+        justify-content: flex-start;
+        -ms-overflow-style: none; /* IE and Edge */
+        scrollbar-width: none; /* Firefox */
+    }
+    
+    .filter-container::-webkit-scrollbar {
+        display: none; /* Chrome, Safari and Opera */
+    }
+    
+    .filter-btn {
+        flex-shrink: 0; /* ڕێگری لە بچووکبوونەوەی دوگمەکان دەگرێت */
+        white-space: nowrap; /* ڕێگری لە دابەزینی ئاستی دەق */
+        margin: 0 6px; /* پاراستنی مەودای یەکسان */
+    }
+}
+
+/* --- Animation Keyframes --- */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95) translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+    .card-container {
+        opacity: 0; /* کارت دەستپێکێ ڤەشێرە */
+        transform: translateY(50px); /* ب 50px ژ جهێ خۆ یێ ئاسایی دەرخە */
+        transition: all 0.8s ease; /* ترانزەیشن بۆ جوڵەیەکا نەرم */
+    }
+
+.card-container.revealed { opacity: 1; transform: translateY(0); }
+
+.fade-in {
+    animation: fadeIn 0.5s ease forwards;
+}
+
+/* --- Glitch Effect Animation --- */
+.site-title::before,
+.site-title::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+}
+
+.site-title::before {
+    left: 2px;
+    text-shadow: -2px 0 #ff00c1;
+    clip: rect(44px, 450px, 56px, 0);
+    animation: glitch-anim-1 5s infinite linear alternate-reverse;
+    -webkit-text-fill-color: #ff00c1;
+}
+
+.site-title::after {
+    left: -2px;
+    text-shadow: -2px 0 #00fff9;
+    clip: rect(44px, 450px, 56px, 0);
+    animation: glitch-anim-2 5s infinite linear alternate-reverse;
+    -webkit-text-fill-color: #00fff9;
+}
+
+@keyframes glitch-anim-1 {
+    0% { clip: rect(2px, 9999px, 10px, 0); }
+    20% { clip: rect(25px, 9999px, 30px, 0); }
+    40% { clip: rect(5px, 9999px, 15px, 0); }
+    60% { clip: rect(15px, 9999px, 20px, 0); }
+    80% { clip: rect(10px, 9999px, 35px, 0); }
+    100% { clip: rect(30px, 9999px, 5px, 0); }
+}
+
+@keyframes glitch-anim-2 {
+    0% { clip: rect(15px, 9999px, 35px, 0); }
+    20% { clip: rect(35px, 9999px, 15px, 0); }
+    40% { clip: rect(5px, 9999px, 25px, 0); }
+    60% { clip: rect(25px, 9999px, 10px, 0); }
+    80% { clip: rect(10px, 9999px, 40px, 0); }
+    100% { clip: rect(40px, 9999px, 5px, 0); }
+}
+
+/* --- Typewriter Effect --- */
+.typing-text {
+    border-right: 3px solid rgba(255, 255, 255, 0.75);
+    animation: blink-caret 0.75s step-end infinite;
+    min-height: 1.6em; /* Prevent collapsing before text appears */
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent; }
+    50% { border-color: rgba(255, 255, 255, 0.75); }
+}
+
+/* --- Custom Cursor (Desktop Only) --- */
+
+/* --- Custom Cursor (Desktop Only) --- */
+@media (min-width: 769px) {
+    body {
+        cursor: none; /* ڤەشارتنا ماوسێ ئاسایی */
+    }
+
+    .custom-cursor {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 40px;
+        height: 40px;
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 9999;
+        transform: translate(-50%, -50%);
+        transition: width 0.2s, height 0.2s, background-color 0.2s, transform 0.1s;
+        mix-blend-mode: difference; /* ڕەنگی جیاواز ددەت ل سەر پاشبنمایێن سپی/ڕەش */
+    }
+
+    .custom-cursor-dot {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 8px;
+        height: 8px;
+        background-color: white;
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 10000;
+        transform: translate(-50%, -50%);
+    }
+}
+
+/* --- Site Footer --- */
+.site-footer {
+    background-color: rgba(15, 23, 42, 0.5);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: center;
+    padding: 30px 20px;
+    margin-top: 50px;
+}
+
+.social-links {
+    margin-bottom: 15px;
+}
+
+.social-links a {
+    display: inline-block;
+    margin: 0 15px;
+    color: #cbd5e1;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.social-links a:hover {
+    color: #8b5cf6;
+    transform: scale(1.2);
+}
+
+.copyright-text {
+    color: #94a3b8;
+    font-size: 0.9rem;
+}
+
+
+/* ------------------------------------------------ */
+
+
+
+
+/* --- Scroll to Top Button --- */
+#scrollTopBtn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 999;
+    border: none;
+    background-color: #8b5cf6;
+    color: white;
+    cursor: pointer;
+    padding: 12px;
+    border-radius: 50%;
+    transition: all 0.4s ease;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    box-shadow: 0 4px 15px rgba(139, 92, 246, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#scrollTopBtn.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+#scrollTopBtn:hover {
+    background-color: #7c3aed;
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(139, 92, 246, 0.6);
+}
+
+/* --- Zoom Alert Box --- */
+#zoom-alert {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(15, 23, 42, 0.95);
+    border: 1px solid #ef4444; /* ڕەنگێ سور بۆ ئاگەهدارکرنێ */
+    color: white;
+    padding: 20px 30px;
+    border-radius: 12px;
+    z-index: 10002;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    pointer-events: none;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+#zoom-alert.show {
+    opacity: 1;
+        padding: 20px 30px;
+
+    visibility: visible;
+}
+
+
+/* ستایل بۆ دوگمێ ڕیفرێشێ */
+#refreshButton {
+    background: rgba(255, 255, 255, 0.05); /* زۆر کاڵ بۆ دیزاینی مۆدێرن */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #f8fafc;
+    padding: 8px 16px;
+    margin-left: 0; /* پێویست ناکات بەهۆی space-between */
+    border-radius: 9999px; /* شێوەی خڕ (Pill Shape) */
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+#refreshButton:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(139, 92, 246, 0.5); /* ڕەنگی مۆر بۆ هۆڤەر */
+    transform: translateY(-2px);
+    color: white;
+    box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3);
+}
+
+#refreshButton:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 8px rgba(139, 92, 246, 0.3);
+}
+
+
+
+/* --- دوگمەی سکڕۆڵ بۆ خوارێ --- */
+.lottie-scroll-btn {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    display: none;
+}
+
+
+
+
+    
+.site-title {
+  display:none;
+}
+
+.hero-section {
+    padding: 0 30px;
+}
+.progress {
+    height: 100%;
+    width: 0;
+        background: repeating-linear-gradient(
+      45deg,
+      #8b5cf6,
+      #8b5cf6 10px,
+      #7c3aed 10px,
+      #7c3aed 20px
+    );
+    transition: width 0.2s ease;
+}
+.progress {
+    height: 100%;
+    width: 0;
+    background: linear-gradient(to right, #8b5cf6, #6366f1); /* Added a gradient */
+    transition: width 0.2s ease;
+}

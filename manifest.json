@@ -1,0 +1,16 @@
+{
+  "name": "گەردۆنێ AI",
+  "short_name": "AI Universe",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#0f172a",
+  "theme_color": "#6366f1",
+  "description": "باشترین ئامرازێن زیرەکییا دەستکرد (AI) کۆمبکە.",
+  "icons": [
+    {
+      "src": "simple ai pulse.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

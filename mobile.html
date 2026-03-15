@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="ku" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="manifest" href="manifest.json">
+    <title>World Ai - Mobile</title>
+    <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script>
+    <script src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.9.3/dist/dotlottie-wc.js" type="module"></script>
+    <!-- زیادکردنی Tailwind و فۆنتەکان -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script>
+    </script>
+</head>
+
+<body>
+
+
+
+    <!-- Zoom Alert Message -->
+    <div id="zoom-alert">
+        <p>⚠️ ببورە، زوومکرن یا هاتیە ڕاگرتن!</p>
+    </div>
+
+    <!-- AI Particle Background -->
+    <canvas id="ai-network"></canvas>
+
+    <section class="hero-section">
+        <!-- Refresh Button -->
+        <button id="refreshButton" aria-label="Refresh Page" onclick="location.reload();">
+            <img src="https://i.ibb.co/LXQCpFkD/wired-lineal-194-refresh-ezgif-com-gif-maker.gif" alt="Refresh"
+                style="width: 24px; height: 24px;">
+        </button>
+
+        <div class="logo-wrapper">
+            <dotlottie-player src="simple ai pulse.json" background="transparent" speed="1" class="main-logo" loop
+                autoplay>
+            </dotlottie-player>
+            <h1 class="site-title" data-text="گەردۆنێ AI">گەردۆنێ AI</h1>
+        </div>
+    </section>
+
+    <!-- بەشێ وەسفێ و ناڤێ دروستکەری -->
+    <section class="about-section">
+        <h2>دەربارەی وێبسایتی</h2>
+        <p id="about-text" class="typing-text"></p>
+    </section>
+
+    <!-- Filter Buttons -->
+    <div class="filter-container">
+        <button class="filter-btn active" data-filter="all">هەمی</button>
+        <button class="filter-btn" data-filter="chatbot">چاتبۆت</button>
+        <button class="filter-btn" data-filter="image">وێنە</button>
+        <button class="filter-btn" data-filter="video">ڤیدیۆ</button>
+        <button class="filter-btn" data-filter="music">موزیک</button>
+        <button class="filter-btn" data-filter="voice">دەنگ</button>
+        <button class="filter-btn" data-filter="search">گەڕان</button>
+        <button class="filter-btn" data-filter="presentation">سمینار</button>
+        <button class="filter-btn" data-filter="productivity">بەرهەمداری</button>
+    </div>
+
+    <!-- زیادکرنا ID بۆ سکڕۆڵکرنێ -->
+    <main id="main-content" class="container">
+        <!-- ChatGPT -->
+        <a href="https://chat.openai.com" target="_blank"
+            style="text-decoration: none; color: inherit; display: block;">
+            <div class="card-container" data-category="chatbot"
+                style="background-image: url('https://i.ibb.co/QFQDxBwj/Red-And-Yellow-Gudi-Padwa-Sale-Poster.png');"
+                -glare="0.2">
+                <div class="inner-border-overlay"></div>
+                <div class="content-area p-5">
+                    <div class="gradient-overlay"></div>
+                    <div class="elevation-badge">
+                        Chatbot
+                    </div>
+                    <div class="text-block">
+                        <h1 class="font-serif-display text-3xl font-bold mb-2">ChatGPT</h1>
+                        <p class="text-sm font-light">چاتبۆتێ پێشکەفتی بۆ نڤیسین و کۆدینگ. (Models: GPT-4o, o1)</p>
+                    </div>
+                    <div class="tour-button">
+                        <img src="https://i.ibb.co/cKQ3c6Wk/click-ezgif-com-gif-maker.gif" alt="Visit"
+                            style="width: 20px; height: 20px;">
+                    </div>
+                </div>
+            </div>
+        </a>
+
+        <!-- Gemini -->
+        <a href="https://gemini.google.com" target="_blank"
+            style="text-decoration: none; color: inherit; display: block;">
+            <div class="card-container" data-category="chatbot"
+                style="background-image: url('https://i.ibb.co/gMsmp7Tw/Red-And-Yellow-Gudi-Padwa-Sale-Poster-1.png');"
+                -glare="0.2">
+                <div class="inner-border-overlay"></div>
+                <div class="content-area p-5">
+                    <div class="gradient-overlay"></div>
+                    <div class="elevation-badge">Google AI</div>
+                    <div class="text-block">
+                        <h1 class="font-serif-display text-3xl font-bold mb-2">Gemini</h1>
+                        <p class="text-sm font-light">مۆدێلێ هەمی-تشت-زان یێ گوگڵ. (Models: Gemini 1.5 Pro, Flash)</p>
+                    </div>
+                    <div class="tour-button">
+                        <img src="https://i.ibb.co/cKQ3c6Wk/click-ezgif-com-gif-maker.gif" alt="Visit"
+                            style="width: 20px; height: 20px;">
+                    </div>
+                </div>
+            </div>
+        </a>
+
+        <!-- Midjourney -->
+        <a href="https://www.midjourney.com" target="_blank"
+            style="text-decoration: none; color: inherit; display: block;">
+            <div class="card-container" data-category="image"
+                style="background-image: url('https://i.ibb.co/svDHMcWB/Red-And-Yellow-Gudi-Padwa-Sale-Poster-2.pngس');"
+                -glare="0.2">
+                <div class="inner-border-overlay"></div>
+                <div class="content-area p-5">
+                    <div class="gradient-overlay"></div>
+                    <div class="elevation-badge">Image Gen</div>
+                    <div class="text-block">
+                        <h1 class="font-serif-display text-3xl font-bold mb-2">Midjourney</h1>
+                        <p class="text-sm font-light">دروستکرنا وێنەیێن فۆتۆریالیستیک. (Model: V6.1)</p>
+                    </div>
+                    <div class="tour-button">
+                        <img src="https://i.ibb.co/cKQ3c6Wk/click-ezgif-com-gif-maker.gif" alt="Visit"
+                            style="width: 20px; height: 20px;">
+                    </div>
+                </div>
+            </div>
+        </a>
+
+        <!-- Claude -->
+        <a href="https://claude.ai" target="_blank" style="text-decoration: none; color: inherit; display: block;">
+            <div class="card-container" data-category="chatbot"
+                style="background-image: url('https://i.ibb.co/gLSLLc0g/Red-And-Yellow-Gudi-Padwa-Sale-Poster-3.png');"
+                -glare="0.2">
+                <div class="inner-border-overlay"></div>
+                <div class="content-area p-5">
+                    <div class="gradient-overlay"></div>
+                    <div class="elevation-badge">Smart AI</div>
+                    <div class="text-block">
+                        <h1 class="font-serif-display text-3xl font-bold mb-2">Claude</h1>
+                        <p class="text-sm font-light">زیرەکیەکێ مرۆڤ-ئاسا بۆ شیکارکرنێ. (Model: Claude 3.5 Sonnet)</p>
+                    </div>
+                    <div class="tour-button">
+                        <img src="https://i.ibb.co/cKQ3c6Wk/click-ezgif-com-gif-maker.gif" alt="Visit"
+                            style="width: 20px; height: 20px;">
+                    </div>
+                </div>
+            </div>
+        </a>
+
+        <!-- Runway -->
+        <a href="https://runwayml.com" target="_blank" style="text-decoration: none; color: inherit; display: block;">
+            <div class="card-container" data-category="video"
+                style="background-image: url('https://i.ibb.co/bRgCy7m4/Red-And-Yellow-Gudi-Padwa-Sale-Poster-5.png');"
+                -glare="0.2">
+                <div class="inner-border-overlay"></div>
+                <div class="content-area p-5">
+                    <div class="gradient-overlay"></div>
+                    <div class="elevation-badge">Video</div>
+                    <div class="text-block">
+                        <h1 class="font-serif-display text-3xl font-bold mb-2">Runway</h1>
+                        <p class="text-sm font-light">دروستکرنا ڤیدیۆیان ژ نڤیسینێ. (Model: Gen-3 Alpha)</p>
+                    </div>
+                    <div class="tour-button">
+                        <img src="https://i.ibb.co/cKQ3c6Wk/click-ezgif-com-gif-maker.gif" alt="Visit"
+                            style="width: 20px; height: 20px;">
+                    </div>
+                </div>
+            </div>
+        </a>
+
+        <!-- Suno -->
+        <a href="https://suno.com" target="_blank" style="text-decoration: none; color: inherit; display: block;">
+            <div class="card-container" data-category="music"
+                style="background-image: url('https://i.ibb.co/BKgRkPJ1/Red-And-Yellow-Gudi-Padwa-Sale-Poster-6.png');"
+                -glare="0.2">
+                <div class="inner-border-overlay"></div>
+                <div class="content-area p-5">
+                    <div class="gradient-overlay"></div>
+                    <div class="elevation-badge">Music</div>
+                    <div class="text-block">
+                        <h1 class="font-serif-display text-3xl font-bold mb-2">Suno AI</h1>
+                        <p class="text-sm font-light">دروستکرنا موزیک و سترانان. (Model: V3.5)</p>
+                    </div>
+                    <div class="tour-button">
+                        <img src="https://i.ibb.co/cKQ3c6Wk/click-ezgif-com-gif-maker.gif" alt="Visit"
+                            style="width: 20px; height: 20px;">
+                    </div>
+                </div>
+            </div>
+        </a>
+
+        <!-- Copilot -->
+        <a href="https://copilot.microsoft.com" target="_blank"
+            style="text-decoration: none; color: inherit; display: block;">
+            <div class="card-container" data-category="productivity chatbot"
+                style="background-image: url('https://i.ibb.co/v46RbtyY/Red-And-Yellow-Gudi-Padwa-Sale-Poster-7.png');"
+                -glare="0.2">
+                <div class="inner-border-overlay"></div>
+                <div class="content-area p-5">
+                    <div class="gradient-overlay"></div>
+                    <div class="elevation-badge">Productivity</div>
+                    <div class="text-block">
+                        <h1 class="font-serif-display text-3xl font-bold mb-2">Copilot</h1>
+                        <p class="text-sm font-light">هاریکارێ زیرەک یێ مایکرۆسۆفت. (Models: GPT-4, DALL-E 3)</p>
+                    </div>
+                    <div class="tour-button">
+                        <img src="https://i.ibb.co/cKQ3c6Wk/click-ezgif-com-gif-maker.gif" alt="Visit"
+                            style="width: 20px; height: 20px;">
+                    </div>
+                </div>
+            </div>
+        </a>
+
+        <!-- Perplexity -->
+        <a href="https://www.perplexity.ai" target="_blank"
+            style="text-decoration: none; color: inherit; display: block;">
+            <div class="card-container" data-category="search"
+                style="background-image: url('https://i.ibb.co/TBbqkzky/Red-And-Yellow-Gudi-Padwa-Sale-Poster-8.png');"
+                -glare="0.2">
+                <div class="inner-border-overlay"></div>
+                <div class="content-area p-5">
+                    <div class="gradient-overlay"></div>
+                    <div class="elevation-badge">Search</div>
+                    <div class="text-block">
+                        <h1 class="font-serif-display text-3xl font-bold mb-2">Perplexity</h1>
+                        <p class="text-sm font-light">بزوێنەرێ گەڕانا زیرەک و ژێدەر. (Models: GPT-4o, Claude 3)</p>
+                    </div>
+                    <div class="tour-button">
+                        <img src="https://i.ibb.co/cKQ3c6Wk/click-ezgif-com-gif-maker.gif" alt="Visit"
+                            style="width: 20px; height: 20px;">
+                    </div>
+                </div>
+            </div>
+        </a>
+
+        <!-- Leonardo.ai -->
+        <a href="https://leonardo.ai" target="_blank" style="text-decoration: none; color: inherit; display: block;">
+            <div class="card-container" data-category="image"
+                style="background-image: url('https://i.ibb.co/35Q2YXv2/Red-And-Yellow-Gudi-Padwa-Sale-Poster-9.png');"
+                -glare="0.2">
+                <div class="inner-border-overlay"></div>
+                <div class="content-area p-5">
+                    <div class="gradient-overlay"></div>
+                    <div class="elevation-badge">Art</div>
+                    <div class="text-block">
+                        <h1 class="font-serif-display text-3xl font-bold mb-2">Leonardo</h1>
+                        <p class="text-sm font-light">دروستکرنا وێنە و ئەسێتێن یاریان. (Models: Phoenix, SDXL)</p>
+                    </div>
+                    <div class="tour-button">
+                        <img src="https://i.ibb.co/cKQ3c6Wk/click-ezgif-com-gif-maker.gif" alt="Visit"
+                            style="width: 20px; height: 20px;">
+                    </div>
+                </div>
+            </div>
+        </a>
+
+        <!-- Gamma App -->
+        <a href="https://gamma.app" target="_blank" style="text-decoration: none; color: inherit; display: block;">
+            <div class="card-container" data-category="presentation productivity"
+                style="background-image: url('https://i.ibb.co/Nn2ybZFB/Red-And-Yellow-Gudi-Padwa-Sale-Poster-10.png');"
+                -glare="0.2">
+                <div class="inner-border-overlay"></div>
+                <div class="content-area p-5">
+                    <div class="gradient-overlay"></div>
+                    <div class="elevation-badge">Presentation</div>
+                    <div class="text-block">
+                        <h1 class="font-serif-display text-3xl font-bold mb-2">Gamma</h1>
+                        <p class="text-sm font-light">دروستکرنا سمینار و سلاێدان ب ئۆتۆماتیکی. (Model: AI Design)</p>
+                    </div>
+                    <div class="tour-button">
+                        <img src="https://i.ibb.co/cKQ3c6Wk/click-ezgif-com-gif-maker.gif" alt="Visit"
+                            style="width: 20px; height: 20px;">
+                    </div>
+                </div>
+            </div>
+        </a>
+
+        <!-- Canva -->
+        <a href="https://www.canva.com" target="_blank" style="text-decoration: none; color: inherit; display: block;">
+            <div class="card-container" data-category="presentation image"
+                style="background-image: url('https://i.ibb.co/RTCg6S1p/Red-And-Yellow-Gudi-Padwa-Sale-Poster-11.png');"
+                -glare="0.2">
+                <div class="inner-border-overlay"></div>
+                <div class="content-area p-5">
+                    <div class="gradient-overlay"></div>
+                    <div class="elevation-badge">Design</div>
+                    <div class="text-block">
+                        <h1 class="font-serif-display text-3xl font-bold mb-2">Canva</h1>
+                        <p class="text-sm font-light">دیزاینکرنا سمینار و گرافیکان ب ساناهی. (Model: Magic Design)</p>
+                    </div>
+                    <div class="tour-button">
+                        <img src="https://i.ibb.co/cKQ3c6Wk/click-ezgif-com-gif-maker.gif" alt="Visit"
+                            style="width: 20px; height: 20px;">
+                    </div>
+                </div>
+            </div>
+        </a>
+
+        <!-- ElevenLabs -->
+        <a href="https://elevenlabs.io" target="_blank" style="text-decoration: none; color: inherit; display: block;">
+            <div class="card-container" data-category="voice"
+                style="background-image: url('https://i.ibb.co/chp8Lx94/Red-And-Yellow-Gudi-Padwa-Sale-Poster-12.png');"
+                -glare="0.2">
+                <div class="inner-border-overlay"></div>
+                <div class="content-area p-5">
+                    <div class="gradient-overlay"></div>
+                    <div class="elevation-badge">Voice AI</div>
+                    <div class="text-block">
+                        <h1 class="font-serif-display text-3xl font-bold mb-2">ElevenLabs</h1>
+                        <p class="text-sm font-light">گوهۆڕینا نڤیسینێ بۆ دەنگ ب کوالێتیەکا سروشتی. (Model: Prime Voice)
+                        </p>
+                    </div>
+                    <div class="tour-button">
+                        <img src="https://i.ibb.co/cKQ3c6Wk/click-ezgif-com-gif-maker.gif" alt="Visit"
+                            style="width: 20px; height: 20px;">
+                    </div>
+                </div>
+            </div>
+        </a>
+
+        <!-- Pika -->
+        <a href="https://pika.art" target="_blank" style="text-decoration: none; color: inherit; display: block;">
+            <div class="card-container" data-category="video"
+                style="background-image: url('https://i.ibb.co/M5ytj12D/Red-And-Yellow-Gudi-Padwa-Sale-Poster-13.png');"
+                -glare="0.2">
+                <div class="inner-border-overlay"></div>
+                <div class="content-area p-5">
+                    <div class="gradient-overlay"></div>
+                    <div class="elevation-badge">Video Gen</div>
+                    <div class="text-block">
+                        <h1 class="font-serif-display text-3xl font-bold mb-2">Pika</h1>
+                        <p class="text-sm font-light">دروستکرنا ڤیدیۆ و ئەنیمەیشنێن کورت. (Model: Pika 1.0)</p>
+                    </div>
+                    <div class="tour-button">
+                        <img src="https://i.ibb.co/cKQ3c6Wk/click-ezgif-com-gif-maker.gif" alt="Visit"
+                            style="width: 20px; height: 20px;">
+                    </div>
+                </div>
+            </div>
+        </a>
+
+        <!-- Character.ai -->
+        <a href="https://character.ai" target="_blank" style="text-decoration: none; color: inherit; display: block;">
+            <div class="card-container" data-category="chatbot"
+                style="background-image: url('https://i.ibb.co/93bbMSTH/Red-And-Yellow-Gudi-Padwa-Sale-Poster-14.png');"
+                -glare="0.2">
+                <div class="inner-border-overlay"></div>
+                <div class="content-area p-5">
+                    <div class="gradient-overlay"></div>
+                    <div class="elevation-badge">Persona</div>
+                    <div class="text-block">
+                        <h1 class="font-serif-display text-3xl font-bold mb-2">Character.ai</h1>
+                        <p class="text-sm font-light">دانوستاندن دگەل کەسایەتیێن جیاواز یێن AI.</p>
+                    </div>
+                    <div class="tour-button">
+                        <img src="https://i.ibb.co/cKQ3c6Wk/click-ezgif-com-gif-maker.gif" alt="Visit"
+                            style="width: 20px; height: 20px;">
+                    </div>
+                </div>
+            </div>
+        </a>
+
+        <!-- Hugging Face -->
+        <a href="https://huggingface.co" target="_blank" style="text-decoration: none; color: inherit; display: block;">
+            <div class="card-container" data-category="productivity search"
+                style="background-image: url('https://i.ibb.co/QvV5tRSd/Red-And-Yellow-Gudi-Padwa-Sale-Poster-15.png');"
+                -glare="0.2">
+                <div class="inner-border-overlay"></div>
+                <div class="content-area p-5">
+                    <div class="gradient-overlay"></div>
+                    <div class="elevation-badge">Open Source</div>
+                    <div class="text-block">
+                        <h1 class="font-serif-display text-3xl font-bold mb-2">Hugging Face</h1>
+                        <p class="text-sm font-light">پلاتفۆرمەکا جیهانی بۆ مۆدێلێن AI. (The AI Hub)</p>
+                    </div>
+                    <div class="tour-button">
+                        <img src="https://i.ibb.co/cKQ3c6Wk/click-ezgif-com-gif-maker.gif" alt="Visit"
+                            style="width: 20px; height: 20px;">
+                    </div>
+                </div>
+            </div>
+        </a>
+
+        <!-- Meta Llama -->
+        <a href="https://www.llama.com" target="_blank" style="text-decoration: none; color: inherit; display: block;">
+            <div class="card-container" data-category="chatbot"
+                style="background-image: url('https://i.ibb.co/rGyfK2nC/Red-And-Yellow-Gudi-Padwa-Sale-Poster-16.png');"
+                -glare="0.2">
+                <div class="inner-border-overlay"></div>
+                <div class="content-area p-5">
+                    <div class="gradient-overlay"></div>
+                    <div class="elevation-badge">Open Source</div>
+                    <div class="text-block">
+                        <h1 class="font-serif-display text-3xl font-bold mb-2">Llama 3</h1>
+                        <p class="text-sm font-light">مۆدێلێ سەرچاوە کراوە یێ بەهێز. (Model: Llama 3.1)</p>
+                    </div>
+                    <div class="tour-button">
+                        <img src="https://i.ibb.co/cKQ3c6Wk/click-ezgif-com-gif-maker.gif" alt="Visit"
+                            style="width: 20px; height: 20px;">
+                    </div>
+                </div>
+            </div>
+        </a>
+    </main>
+
+    <!-- Scroll to Top Button -->
+    <button id="scrollTopBtn" title="Go to top">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m18 15-6-6-6 6" />
+        </svg>
+    </button>
+
+    <!-- Site Footer -->
+    <footer class="site-footer">
+        <div class="social-links">
+            <a href="https://www.instagram.com/iamshvan.26/" target="_blank" aria-label="Instagram">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                </svg>
+            </a>
+            <a href="https://www.linkedin.com/in/shvan-jamal-b785a63b5" target="_blank" aria-label="LinkedIn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                    <rect x="2" y="9" width="4" height="12"></rect>
+                    <circle cx="4" cy="4" r="2"></circle>
+                </svg>
+            </a>
+            <a href="https://github.com/shivanjamal" target="_blank" aria-label="GitHub">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path
+                        d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+                    </path>
+                </svg>
+            </a>
+        </div>
+        <p class="copyright-text">
+            &copy; 2026 . هەمی ماف پاراستینە ژلایێ شڤان جەمال ڤە.
+        </p>
+    </footer>
+
+    <script>
+        // Filter Logic
+        document.addEventListener('DOMContentLoaded', () => {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const aiCards = document.querySelectorAll('.card-container');
+
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+
+                    const filter = button.getAttribute('data-filter');
+
+                    aiCards.forEach(card => {
+                        const category = card.getAttribute('data-category');
+
+                        // لابردنا کلاسێ ئەنیمەیشنێ دا جارەکا دی کار بکەت
+                        card.classList.remove('fade-in');
+
+                        if (filter === 'all' || (category && category.includes(filter))) {
+                            card.style.display = 'block';
+                            void card.offsetWidth; // Trigger Reflow (Reset Animation)
+                            card.classList.add('fade-in');
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            });
+        });
+
+        // --- AI Network Animation ---
+        const canvas = document.getElementById('ai-network');
+        const ctx = canvas.getContext('2d');
+        let width, height;
+        let particles = [];
+
+        function init() {
+            width = window.innerWidth;
+            height = window.innerHeight;
+            canvas.width = width;
+            canvas.height = height;
+            particles = [];
+            const numParticles = width < 768 ? 40 : 100; // کەمتر بۆ مۆبایل
+
+            for (let i = 0; i < numParticles; i++) {
+                particles.push({
+                    x: Math.random() * width,
+                    y: Math.random() * height,
+                    vx: (Math.random() - 0.5) * 0.5,
+                    vy: (Math.random() - 0.5) * 0.5,
+                    size: Math.random() * 2 + 1
+                });
+            }
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, width, height);
+            ctx.fillStyle = 'rgba(139, 92, 246, 0.5)'; // ڕەنگی مۆر
+            ctx.strokeStyle = 'rgba(139, 92, 246, 0.15)';
+
+            particles.forEach((p, i) => {
+                p.x += p.vx;
+                p.y += p.vy;
+
+                if (p.x < 0 || p.x > width) p.vx *= -1;
+                if (p.y < 0 || p.y > height) p.vy *= -1;
+
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                ctx.fill();
+
+                for (let j = i + 1; j < particles.length; j++) {
+                    const p2 = particles[j];
+                    const dx = p.x - p2.x;
+                    const dy = p.y - p2.y;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+
+                    if (dist < 120) {
+                        ctx.beginPath();
+                        ctx.moveTo(p.x, p.y);
+                        ctx.lineTo(p2.x, p2.y);
+                        ctx.stroke();
+                    }
+                }
+            });
+            requestAnimationFrame(animate);
+        }
+
+        window.addEventListener('resize', init);
+        init();
+        animate();
+
+        // --- Parallax Background Effect ---
+        window.addEventListener('scroll', () => {
+            const scrollPosition = window.scrollY;
+            if (canvas) {
+                canvas.style.transform = `translateY(${scrollPosition * 0.4}px)`;
+            }
+        });
+
+        // --- Typewriter Effect ---
+        document.addEventListener('DOMContentLoaded', () => {
+            const typewriterElement = document.getElementById('about-text');
+            if (typewriterElement) {
+                const textToType = 'ئەڤ مالپەرە هاتیە دروستکرن ژلایێ <span class="shvan-name">شڤان جەمال</span> ڤە. ئارمانجا مە ئەوە ئەم باشترین و نویترین ئامرازێن زیرەکییا دەستکرد (AI) کۆمبکەین و پێشکێشی هەوە بکەین داکو ب ساناهی مفای ژێ ببینن د کارێن خۆ یێن ڕۆژانە دا.';
+                let charIndex = 0;
+
+                function type() {
+                    if (charIndex < textToType.length) {
+                        if (textToType.charAt(charIndex) === '<') {
+                            const closingTagIndex = textToType.indexOf('>', charIndex);
+                            typewriterElement.innerHTML += textToType.substring(charIndex, closingTagIndex + 1);
+                            charIndex = closingTagIndex + 1;
+                        } else {
+                            typewriterElement.innerHTML += textToType.charAt(charIndex);
+                            charIndex++;
+                        }
+                        setTimeout(type, 40); // Lezahiya nivîsînê
+                    } else {
+                        typewriterElement.classList.remove('typing-text'); // Rakirina cursor piştî nivîsînê
+                    }
+                }
+
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            type();
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.5 });
+                observer.observe(typewriterElement);
+            }
+        });
+
+        // --- Scroll to Top Logic ---
+        const scrollTopBtn = document.getElementById("scrollTopBtn");
+
+        window.addEventListener('scroll', () => {
+            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+                scrollTopBtn.classList.add("show");
+            } else {
+                scrollTopBtn.classList.remove("show");
+            }
+        });
+
+        scrollTopBtn.addEventListener("click", () => {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        });
+
+        // --- Block Zoom & Show Alert ---
+        const zoomAlert = document.getElementById('zoom-alert');
+        let alertTimeout;
+
+        function showZoomBlocked() {
+            if (zoomAlert) {
+                zoomAlert.classList.add('show');
+                clearTimeout(alertTimeout);
+                alertTimeout = setTimeout(() => {
+                    zoomAlert.classList.remove('show');
+                }, 2000); // نامە پشتی ٢ چرکەیان دێ بەرزە بیت
+            }
+        }
+
+        // 1. ڕێگری ل Pinch Zoom (بۆ iOS Safari)
+        document.addEventListener('gesturestart', function (e) {
+            e.preventDefault();
+            showZoomBlocked();
+        });
+
+        // 2. ڕێگری ل Pinch Zoom (بۆ Android/Standard)
+        document.addEventListener('touchmove', function (e) {
+            if (e.touches.length > 1) { // ئەگەر دوو تبل بکارئینان
+                e.preventDefault();
+                showZoomBlocked();
+            }
+        }, { passive: false });
+
+        // 3. ڕێگری ل Double Tap Zoom (زووم ب دوو کلیکان)
+        let lastTouchEnd = 0;
+        document.addEventListener('touchend', function (e) {
+            const now = (new Date()).getTime();
+            if (now - lastTouchEnd <= 300) {
+                e.preventDefault();
+                // تێبینی: مە alert لێرە دانەنا دا بێزارکەر نەبیت دەمێ ب لەز کلیک دکەی
+            }
+            lastTouchEnd = now;
+        }, false);
+
+        // --- Reveal on Scroll Logic ---
+        function revealCards() {
+            const cards = document.querySelectorAll('.card-container');
+
+            cards.forEach(card => {
+                const cardTop = card.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+
+                if (cardTop < windowHeight - 150) { // 150px ژ خوارێ
+                    card.classList.add('revealed');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', revealCards);
+        window.addEventListener('load', revealCards); // بۆ ئەوەی دەستپێکێ ژی کار بکەت
+
+        // بانگکردنی ڕاستەوخۆ بۆ ئەوەی کارتەکانی سەرەتا دەربکەون
+        revealCards();
+    </script>
+</body>
+
+</html>

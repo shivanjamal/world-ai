@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="ku" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>World AI</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            color: #ffffff;
+            overflow: hidden;
+            opacity: 1;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        /* Particles effect in background */
+        .background-effect {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image:
+                radial-gradient(circle at 15% 50%, rgba(99, 102, 241, 0.15), transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(168, 85, 247, 0.15), transparent 25%);
+            z-index: 0;
+        }
+
+        .splash-container {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            animation: fadeInScale 1s ease-out forwards;
+        }
+
+        .logo-wrapper {
+            position: relative;
+            width: 120px;
+            height: 120px;
+            margin-bottom: 32px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            background: rgba(99, 102, 241, 0.1);
+            box-shadow: 0 0 30px rgba(99, 102, 241, 0.2), inset 0 0 20px rgba(99, 102, 241, 0.1);
+            animation: pulse 2.5s infinite ease-in-out;
+        }
+
+        .logo-wrapper::after {
+            content: '';
+            position: absolute;
+            top: -4px;
+            bottom: -4px;
+            left: -4px;
+            right: -4px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #6366f1, #a855f7, #ec4899);
+            z-index: -1;
+            filter: blur(12px);
+            opacity: 0.6;
+            animation: rotateBg 4s infinite linear;
+        }
+
+        .logo-svg {
+            width: 56px;
+            height: 56px;
+            color: #ffffff;
+            z-index: 10;
+            filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.4));
+        }
+
+        .app-name {
+            font-size: 2.75rem;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            margin-bottom: 16px;
+            background: linear-gradient(to right, #ffffff, #c7d2fe);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-align: center;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .tagline {
+            font-size: 1.15rem;
+            color: #94a3b8;
+            text-align: center;
+            max-width: 90%;
+            line-height: 1.6;
+            opacity: 0;
+            animation: slideUpFade 0.8s ease-out 0.4s forwards;
+            font-weight: 400;
+        }
+
+        .loading-dots {
+            margin-top: 48px;
+            display: flex;
+            gap: 10px;
+            opacity: 0;
+            animation: slideUpFade 0.8s ease-out 0.8s forwards;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #818cf8;
+            animation: bounce 1.4s infinite ease-in-out both;
+            box-shadow: 0 0 10px rgba(129, 140, 248, 0.6);
+        }
+
+        .dot:nth-child(1) {
+            animation-delay: -0.32s;
+        }
+
+        .dot:nth-child(2) {
+            animation-delay: -0.16s;
+        }
+
+        @keyframes fadeInScale {
+            0% {
+                opacity: 0;
+                transform: scale(0.9) translateY(10px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        @keyframes slideUpFade {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(0.95);
+                box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.4);
+            }
+
+            50% {
+                transform: scale(1.02);
+                box-shadow: 0 0 0 15px rgba(99, 102, 241, 0);
+            }
+
+            100% {
+                transform: scale(0.95);
+                box-shadow: 0 0 0 0 rgba(99, 102, 241, 0);
+            }
+        }
+
+        @keyframes rotateBg {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes bounce {
+
+            0%,
+            80%,
+            100% {
+                transform: scale(0);
+                opacity: 0.5;
+            }
+
+            40% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        /* Fade out body before redirect */
+        body.fade-out {
+            opacity: 0;
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 768px) {
+            .logo-wrapper {
+                width: 100px;
+                height: 100px;
+                margin-bottom: 24px;
+            }
+
+            .logo-svg {
+                width: 46px;
+                height: 46px;
+            }
+
+            .app-name {
+                font-size: 2.25rem;
+                margin-bottom: 12px;
+            }
+
+            .tagline {
+                font-size: 1rem;
+                padding: 0 16px;
+                line-height: 1.5;
+            }
+
+            .loading-dots {
+                margin-top: 36px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo-wrapper {
+                width: 86px;
+                height: 86px;
+                margin-bottom: 20px;
+            }
+
+            .logo-svg {
+                width: 38px;
+                height: 38px;
+            }
+
+            .app-name {
+                font-size: 1.85rem;
+            }
+
+            .tagline {
+                font-size: 0.95rem;
+                max-width: 95%;
+            }
+
+            .loading-dots {
+                margin-top: 32px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="background-effect"></div>
+    <div class="splash-container">
+        <div class="logo-wrapper">
+            <svg class="logo-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path
+                    d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z" />
+                <path d="M5 3v4M3 5h4M19 3v4M17 5h4" />
+            </svg>
+        </div>
+        <h1 class="app-name">گەردۆنێ AI</h1>
+        <p class="tagline">باشترین ئامرازێن زیرەکییا دەستکرد کۆمبکە</p>
+
+        <div class="loading-dots">
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+        </div>
+    </div>
+
+    <script>
+        // Device Detection Logic
+        function checkDeviceAndRedirect() {
+            const ua = navigator.userAgent.toLowerCase();
+            const isMobile = /android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(ua);
+            const targetUrl = isMobile ? "mobile.html" : "desktop.html";
+
+            // Allow splash screen to show for 2.2 seconds before redirecting
+            setTimeout(() => {
+                document.body.classList.add('fade-out');
+
+                setTimeout(() => {
+                    window.location.href = targetUrl;
+                }, 500); // Wait for fade out transition (0.5s)
+            }, 2200);
+        }
+
+        // Ensure scripts run after DOM is fully loaded
+        if (document.readyState === 'complete') {
+            checkDeviceAndRedirect();
+        } else {
+            window.addEventListener('load', checkDeviceAndRedirect);
+        }
+    </script>
+</body>
+
+</html>
