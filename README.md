@@ -39,3 +39,7 @@
 ## لینکێ پرۆژەی (Repository)
 تۆ دشێی تەماشای کۆدێ پرۆژەی بکەی ل:
 https://github.com/shivanjamal/world-ai
+
+## لینکێ مالپەری (Live Demo)
+تۆ دشێی سەردانا مالپەری بکەی ل:
+https://worldaii.netlify.app
