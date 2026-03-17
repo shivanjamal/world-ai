@@ -43,6 +43,17 @@
             </dotlottie-player>
             <h1 class="site-title" data-text="گەردۆنێ AI">گەردۆنێ AI</h1>
         </div>
+
+        <!-- Learn More / Info Button -->
+        <button id="infoButton" aria-label="Learn More"
+            onclick="document.querySelector('.about-section').scrollIntoView({behavior: 'smooth'})">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="16" x2="12" y2="12"></line>
+                <line x1="12" y1="8" x2="12.01" y2="8"></line>
+            </svg>
+        </button>
     </section>
 
     <!-- بەشێ وەسفێ و ناڤێ دروستکەری -->
@@ -50,6 +61,25 @@
         <h2>دەربارەی وێبسایتی</h2>
         <p id="about-text" class="typing-text"></p>
     </section>
+
+    <!-- Search Bar -->
+    <div class="search-container">
+        <div class="search-wrapper">
+            <input type="text" id="searchInput" class="search-input" placeholder="گەڕان...">
+            <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+            <button id="clearSearchBtn" class="search-clear-btn" aria-label="Clear search">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+    </div>
 
     <!-- Filter Buttons -->
     <div class="filter-container">
@@ -62,10 +92,322 @@
         <button class="filter-btn" data-filter="search">گەڕان</button>
         <button class="filter-btn" data-filter="presentation">سمینار</button>
         <button class="filter-btn" data-filter="productivity">بەرهەمداری</button>
+        <button class="filter-btn" data-filter="development">گەشەپێدان</button>
     </div>
 
     <!-- زیادکرنا ID بۆ سکڕۆڵکرنێ -->
     <main id="main-content" class="container">
+        <a href="https://www.jasper.ai" target="_blank"
+            style="text-decoration: none; color: inherit; display: block; margin-bottom: 20px;">
+            <div class="card-container" data-category="writing"
+                style="background-image: url('https://i.ibb.co/4wF48vVS/Red-And-Yellow-Gudi-Padwa-Sale-Poster-14.png');"
+                -glare="0.2">
+                <div class="inner-border-overlay"></div>
+                <div class="content-area p-5">
+                    <div class="gradient-overlay"></div>
+                    <div class="elevation-badge">Content AI</div>
+                    <div class="text-block">
+                        <h1 class="font-serif-display text-3xl font-bold mb-2">Jasper</h1>
+                        <p class="text-sm font-light">ئامرازەکێ پرۆفیشناڵ بۆ نڤیسینا بابەتێن سۆشیاڵ میدیایێ، بلۆگ و
+                            ڕیکلامان ب شێوازەکێ سەرنجڕاکێش.</p>
+                    </div>
+                    <div class="tour-button">
+                        <img src="https://i.ibb.co/cKQ3c6Wk/click-ezgif-com-gif-maker.gif" alt="Visit"
+                            style="width: 20px; height: 20px;">
+                    </div>
+                </div>
+            </div>
+        </a>
+
+        <a href="https://www.copy.ai" target="_blank"
+            style="text-decoration: none; color: inherit; display: block; margin-bottom: 20px;">
+            <div class="card-container" data-category="writing"
+                style="background-image: url('https://i.ibb.co/1fnr0Nbn/Red-And-Yellow-Gudi-Padwa-Sale-Poster-13.png');"
+                -glare="0.2">
+                <div class="inner-border-overlay"></div>
+                <div class="content-area p-5">
+                    <div class="gradient-overlay"></div>
+                    <div class="elevation-badge">Marketing AI</div>
+                    <div class="text-block">
+                        <h1 class="font-serif-display text-3xl font-bold mb-2">Copy.ai</h1>
+                        <p class="text-sm font-light">هاریکارەکێ زیرەک بۆ نڤیسینا ئیمەیڵێن بازرگانی و پۆستێن مارکێتینگێ
+                            کو کارێ تە گەلەک ب ساناهی دکەت.</p>
+                    </div>
+                    <div class="tour-button">
+                        <img src="https://i.ibb.co/cKQ3c6Wk/click-ezgif-com-gif-maker.gif" alt="Visit"
+                            style="width: 20px; height: 20px;">
+                    </div>
+                </div>
+            </div>
+        </a>
+
+        <a href="https://quillbot.com" target="_blank"
+            style="text-decoration: none; color: inherit; display: block; margin-bottom: 20px;">
+            <div class="card-container" data-category="writing"
+                style="background-image: url('https://i.ibb.co/mVf3JJWY/Red-And-Yellow-Gudi-Padwa-Sale-Poster-12.png');"
+                -glare="0.2">
+                <div class="inner-border-overlay"></div>
+                <div class="content-area p-5">
+                    <div class="gradient-overlay"></div>
+                    <div class="elevation-badge">Paraphrasing AI</div>
+                    <div class="text-block">
+                        <h1 class="font-serif-display text-3xl font-bold mb-2">Quillbot</h1>
+                        <p class="text-sm font-light">باشترین ئامراز بۆ دوبارە داڕشتنەوەیا ڕستە و پارەگرافان و باشترکرنا
+                            کوالیتیا نڤیسینا ئینگلیزی.</p>
+                    </div>
+                    <div class="tour-button">
+                        <img src="https://i.ibb.co/cKQ3c6Wk/click-ezgif-com-gif-maker.gif" alt="Visit"
+                            style="width: 20px; height: 20px;">
+                    </div>
+                </div>
+            </div>
+        </a>
+
+        <a href="https://www.grammarly.com" target="_blank"
+            style="text-decoration: none; color: inherit; display: block; margin-bottom: 20px;">
+            <div class="card-container" data-category="writing"
+                style="background-image: url('https://i.ibb.co/7thBq4T9/Red-And-Yellow-Gudi-Padwa-Sale-Poster-11.png');"
+                -glare="0.2">
+                <div class="inner-border-overlay"></div>
+                <div class="content-area p-5">
+                    <div class="gradient-overlay"></div>
+                    <div class="elevation-badge">Grammar AI</div>
+                    <div class="text-block">
+                        <h1 class="font-serif-display text-3xl font-bold mb-2">Grammarly</h1>
+                        <p class="text-sm font-light">چاککەرێ ڕێزمانێ و ستایلێ نڤیسینێ کو ڕێ نادهەت چو خەلەتیێن
+                            زمانەوانی د تێکستێن تە دا هەبن.</p>
+                    </div>
+                    <div class="tour-button">
+                        <img src="https://i.ibb.co/cKQ3c6Wk/click-ezgif-com-gif-maker.gif" alt="Visit"
+                            style="width: 20px; height: 20px;">
+                    </div>
+                </div>
+            </div>
+        </a>
+
+        <a href="https://www.udio.com" target="_blank"
+            style="text-decoration: none; color: inherit; display: block; margin-bottom: 20px;">
+            <div class="card-container" data-category="music"
+                style="background-image: url('https://i.ibb.co/VKbN75g/Red-And-Yellow-Gudi-Padwa-Sale-Poster-10.png');"
+                -glare="0.2">
+                <div class="inner-border-overlay"></div>
+                <div class="content-area p-5">
+                    <div class="gradient-overlay"></div>
+                    <div class="elevation-badge">Pro Music AI</div>
+                    <div class="text-block">
+                        <h1 class="font-serif-display text-3xl font-bold mb-2">Udio</h1>
+                        <p class="text-sm font-light">پێشەنگێ نوی یێ جیهانێ بۆ دروستکرنا موزیک و سترانان ب کوالیتیا
+                            ستۆدیۆیێن هەرە بەرز.</p>
+                    </div>
+                    <div class="tour-button">
+                        <img src="https://i.ibb.co/cKQ3c6Wk/click-ezgif-com-gif-maker.gif" alt="Visit"
+                            style="width: 20px; height: 20px;">
+                    </div>
+                </div>
+            </div>
+        </a>
+
+        <a href="https://www.voicemod.net" target="_blank"
+            style="text-decoration: none; color: inherit; display: block; margin-bottom: 20px;">
+            <div class="card-container" data-category="audio"
+                style="background-image: url('https://i.ibb.co/zWn4d2tq/Red-And-Yellow-Gudi-Padwa-Sale-Poster-9.png');"
+                -glare="0.2">
+                <div class="inner-border-overlay"></div>
+                <div class="content-area p-5">
+                    <div class="gradient-overlay"></div>
+                    <div class="elevation-badge">Real-time Voice</div>
+                    <div class="text-block">
+                        <h1 class="font-serif-display text-3xl font-bold mb-2">Voicemod</h1>
+                        <p class="text-sm font-light">گوهۆڕینا دەنگی ب شێوەیەکێ ڕاستەوخۆ (Real-time) و زێدەکرنا
+                            کارتێکرنێن دەنگی یێن جودا و کەیفخۆش.</p>
+                    </div>
+                    <div class="tour-button">
+                        <img src="https://i.ibb.co/cKQ3c6Wk/click-ezgif-com-gif-maker.gif" alt="Visit"
+                            style="width: 20px; height: 20px;">
+                    </div>
+                </div>
+            </div>
+        </a>
+
+        <a href="https://mubert.com" target="_blank"
+            style="text-decoration: none; color: inherit; display: block; margin-bottom: 20px;">
+            <div class="card-container" data-category="music"
+                style="background-image: url('https://i.ibb.co/WNYhRCgv/Red-And-Yellow-Gudi-Padwa-Sale-Poster-8.png');"
+                -glare="0.2">
+                <div class="inner-border-overlay"></div>
+                <div class="content-area p-5">
+                    <div class="gradient-overlay"></div>
+                    <div class="elevation-badge">Background Music</div>
+                    <div class="text-block">
+                        <h1 class="font-serif-display text-3xl font-bold mb-2">Mubert</h1>
+                        <p class="text-sm font-light">دروستکرنا موزیکێن پاشبنەمایێ (Background Music) کو بێ مافێن
+                            چاپکرنێ نە (Royalty-free) بۆ ڤیدیۆ و ستریمەران.</p>
+                    </div>
+                    <div class="tour-button">
+                        <img src="https://i.ibb.co/cKQ3c6Wk/click-ezgif-com-gif-maker.gif" alt="Visit"
+                            style="width: 20px; height: 20px;">
+                    </div>
+                </div>
+            </div>
+        </a>
+
+        <a href="https://podcast.adobe.com/enhance" target="_blank"
+            style="text-decoration: none; color: inherit; display: block; margin-bottom: 20px;">
+            <div class="card-container" data-category="audio"
+                style="background-image: url('https://i.ibb.co/HLkMT901/Red-And-Yellow-Gudi-Padwa-Sale-Poster-7.png');"
+                -glare="0.2">
+                <div class="inner-border-overlay"></div>
+                <div class="content-area p-5">
+                    <div class="gradient-overlay"></div>
+                    <div class="elevation-badge">Audio Fix</div>
+                    <div class="text-block">
+                        <h1 class="font-serif-display text-3xl font-bold mb-2">Adobe Enhance</h1>
+                        <p class="text-sm font-light">دەنگێن خراب و تێکچووی پاقژ بکە و بکە وەک دەنگێ ستۆدیۆیێ ب رێکا
+                            تەکنۆلۆژیایێ Adobe.</p>
+                    </div>
+                    <div class="tour-button">
+                        <img src="https://i.ibb.co/cKQ3c6Wk/click-ezgif-com-gif-maker.gif" alt="Visit"
+                            style="width: 20px; height: 20px;">
+                    </div>
+                </div>
+            </div>
+        </a>
+
+        <a href="https://mistral.ai" target="_blank"
+            style="text-decoration: none; color: inherit; display: block; margin-bottom: 20px;">
+            <div class="card-container" data-category="chatbot"
+                style="background-image: url('https://i.ibb.co/JwwGSjfT/Red-And-Yellow-Gudi-Padwa-Sale-Poster-6.png');"
+                -glare="0.2">
+                <div class="inner-border-overlay"></div>
+                <div class="content-area p-5">
+                    <div class="gradient-overlay"></div>
+                    <div class="elevation-badge">Open AI Model</div>
+                    <div class="text-block">
+                        <h1 class="font-serif-display text-3xl font-bold mb-2">Mistral AI</h1>
+                        <p class="text-sm font-light">مۆدێلەکێ فەرەنسی یێ ب هێز و خێرا، زۆر یێ زیرەکە د نڤیسین و
+                            چارەسەرکرنا ئاریشەیێن تەکنیکی دا.</p>
+                    </div>
+                    <div class="tour-button">
+                        <img src="https://i.ibb.co/cKQ3c6Wk/click-ezgif-com-gif-maker.gif" alt="Visit"
+                            style="width: 20px; height: 20px;">
+                    </div>
+                </div>
+            </div>
+        </a>
+
+        <a href="https://www.blackbox.ai" target="_blank"
+            style="text-decoration: none; color: inherit; display: block; margin-bottom: 20px;">
+            <div class="card-container" data-category="development"
+                style="background-image: url('https://i.ibb.co/sv3Pvkfh/Red-And-Yellow-Gudi-Padwa-Sale-Poster-4.png');"
+                -glare="0.2">
+                <div class="inner-border-overlay"></div>
+                <div class="content-area p-5">
+                    <div class="gradient-overlay"></div>
+                    <div class="elevation-badge">Coding AI</div>
+                    <div class="text-block">
+                        <h1 class="font-serif-display text-3xl font-bold mb-2">Blackbox AI</h1>
+                        <p class="text-sm font-light">هەڤالێ هەرە باش یێ پڕۆگرامەران؛ کۆدی بۆ تە دەنڤیسیت و د گەڕیان و
+                            چاککرنا خەلەتیێن سۆفتوێری دا هاریکارە.</p>
+                    </div>
+                    <div class="tour-button">
+                        <img src="https://i.ibb.co/cKQ3c6Wk/click-ezgif-com-gif-maker.gif" alt="Visit"
+                            style="width: 20px; height: 20px;">
+                    </div>
+                </div>
+            </div>
+        </a>
+
+        <a href="https://www.deepseek.com" target="_blank"
+            style="text-decoration: none; color: inherit; display: block; margin-bottom: 20px;">
+            <div class="card-container" data-category="chatbot"
+                style="background-image: url('https://i.ibb.co/Q7NTWX1k/Red-And-Yellow-Gudi-Padwa-Sale-Poster-3.png');"
+                -glare="0.2">
+                <div class="inner-border-overlay"></div>
+                <div class="content-area p-5">
+                    <div class="gradient-overlay"></div>
+                    <div class="elevation-badge">Reasoning AI</div>
+                    <div class="text-block">
+                        <h1 class="font-serif-display text-3xl font-bold mb-2">DeepSeek</h1>
+                        <p class="text-sm font-light">مۆدێلەکێ پێشکەفتی بۆ بیرکاری و لۆجیکێ، زۆر یێ ب هێزە د شیکارکرنا
+                            بابەتێن ئالۆز دا ب شێوەیەکێ بێبەرامبەر.</p>
+                    </div>
+                    <div class="tour-button">
+                        <img src="https://i.ibb.co/cKQ3c6Wk/click-ezgif-com-gif-maker.gif" alt="Visit"
+                            style="width: 20px; height: 20px;">
+                    </div>
+                </div>
+            </div>
+        </a>
+
+        <a href="https://poe.com" target="_blank"
+            style="text-decoration: none; color: inherit; display: block; margin-bottom: 20px;">
+            <div class="card-container" data-category="productivity"
+                style="background-image: url('https://i.ibb.co/n8c9CDw2/Red-And-Yellow-Gudi-Padwa-Sale-Poster-2.png');"
+                -glare="0.2">
+                <div class="inner-border-overlay"></div>
+                <div class="content-area p-5">
+                    <div class="gradient-overlay"></div>
+                    <div class="elevation-badge">Multi-AI Hub</div>
+                    <div class="text-block">
+                        <h1 class="font-serif-display text-3xl font-bold mb-2">Poe</h1>
+                        <p class="text-sm font-light">پلاتفۆرمەک کو هەموو چاتبۆتێن جیهانێ (GPT, Claude, Llama) د ئێک جهـ
+                            دا کۆم دکەت دا کو تو ب ساناهی تاقی بکەی.</p>
+                    </div>
+                    <div class="tour-button">
+                        <img src="https://i.ibb.co/cKQ3c6Wk/click-ezgif-com-gif-maker.gif" alt="Visit"
+                            style="width: 20px; height: 20px;">
+                    </div>
+                </div>
+            </div>
+        </a>
+
+        <a href="https://v0.dev" target="_blank" style="text-decoration: none; color: inherit; display: block;">
+            <div class="card-container" data-category="development"
+                style="background-image: url('https://i.ibb.co/fdZVhQC9/Red-And-Yellow-Gudi-Padwa-Sale-Poster-1.png');"
+                -glare="0.2">
+                <div class="inner-border-overlay"></div>
+                <div class="content-area p-5">
+                    <div class="gradient-overlay"></div>
+                    <div class="elevation-badge">
+                        UI Generator
+                    </div>
+                    <div class="text-block">
+                        <h1 class="font-serif-display text-3xl font-bold mb-2">v0.dev</h1>
+                        <p class="text-sm font-light">ئامرازەکێ نایاب بۆ گەشەپێدەران؛ رووکارێن سایتان (UI) ب شێوازێ
+                            React و Tailwind دروست دکەت بتنێ ب رێکا وەسفکرنێ.</p>
+                    </div>
+                    <div class="tour-button">
+                        <img src="https://i.ibb.co/cKQ3c6Wk/click-ezgif-com-gif-maker.gif" alt="Visit"
+                            style="width: 20px; height: 20px;">
+                    </div>
+                </div>
+            </div>
+        </a>
+
+
+        <!-- ChatGPT  -->
+        <a href="https://www.rezi.ai" target="_blank" style="text-decoration: none; color: inherit; display: block;">
+            <div class="card-container" data-category="presentation productivity"
+                style="background-image: url('https://i.ibb.co/cXFST7T6/Red-And-Yellow-Gudi-Padwa-Sale-Poster.png');"
+                -glare="0.2">
+                <div class="inner-border-overlay"></div>
+                <div class="content-area p-5">
+                    <div class="gradient-overlay"></div>
+                    <div class="elevation-badge">
+                        Presentation
+                    </div>
+                    <div class="text-block">
+                        <h1 class="font-serif-display text-3xl font-bold mb-2">Rezi.ai</h1>
+                        <p class="text-sm font-light">ئامرازەکێ زیرەک بۆ دروستکرنا CV یێن پرۆفیشناڵ ب ستایلێ ATS، دا کو
+                            شانسێ قەبوولکرنا تە ل کۆمپانیان زێدەتر لێ بهێت.</p>
+                    </div>
+                    <div class="tour-button">
+                        <img src="https://i.ibb.co/cKQ3c6Wk/click-ezgif-com-gif-maker.gif" alt="Visit"
+                            style="width: 20px; height: 20px;">
+                    </div>
+                </div>
+            </div>
+        </a>
         <!-- ChatGPT -->
         <a href="https://chat.openai.com" target="_blank"
             style="text-decoration: none; color: inherit; display: block;">
@@ -116,7 +458,7 @@
         <a href="https://www.midjourney.com" target="_blank"
             style="text-decoration: none; color: inherit; display: block;">
             <div class="card-container" data-category="image"
-                style="background-image: url('https://i.ibb.co/svDHMcWB/Red-And-Yellow-Gudi-Padwa-Sale-Poster-2.pngس');"
+                style="background-image: url('https://i.ibb.co/svDHMcWB/Red-And-Yellow-Gudi-Padwa-Sale-Poster-2.png');"
                 -glare="0.2">
                 <div class="inner-border-overlay"></div>
                 <div class="content-area p-5">
@@ -457,6 +799,8 @@
         document.addEventListener('DOMContentLoaded', () => {
             const filterButtons = document.querySelectorAll('.filter-btn');
             const aiCards = document.querySelectorAll('.card-container');
+            const searchInput = document.getElementById('searchInput');
+            const clearBtn = document.getElementById('clearSearchBtn');
 
             filterButtons.forEach(button => {
                 button.addEventListener('click', () => {
@@ -480,6 +824,35 @@
                         }
                     });
                 });
+            });
+
+            // Search Logic
+            searchInput.addEventListener('input', (e) => {
+                const searchTerm = e.target.value.toLowerCase();
+
+                // Reset filters visual state to 'All' when searching
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                document.querySelector('[data-filter="all"]').classList.add('active');
+
+                aiCards.forEach(card => {
+                    const title = card.querySelector('h1').textContent.toLowerCase();
+                    const category = card.getAttribute('data-category');
+
+                    if (title.includes(searchTerm) || (category && category.includes(searchTerm))) {
+                        card.style.display = 'block';
+                        card.classList.add('fade-in');
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+
+            // Clear Button Logic
+            clearBtn.addEventListener('click', () => {
+                searchInput.value = '';
+                clearBtn.classList.remove('show');
+                searchInput.focus();
+                searchInput.dispatchEvent(new Event('input')); // Trigger input logic to reset cards
             });
         });
 
@@ -508,36 +881,70 @@
             }
         }
 
+        // Touch interaction
+        let touch = { x: null, y: null, radius: 100 };
+
+        window.addEventListener('touchstart', e => { touch.x = e.touches[0].clientX; touch.y = e.touches[0].clientY; });
+        window.addEventListener('touchmove', e => { touch.x = e.touches[0].clientX; touch.y = e.touches[0].clientY; });
+        window.addEventListener('touchend', () => { touch.x = null; touch.y = null; });
+
         function animate() {
             ctx.clearRect(0, 0, width, height);
-            ctx.fillStyle = 'rgba(139, 92, 246, 0.5)'; // ڕەنگی مۆر
-            ctx.strokeStyle = 'rgba(139, 92, 246, 0.15)';
 
-            particles.forEach((p, i) => {
+            // 1. Update positions (Calculations only)
+            particles.forEach((p) => {
                 p.x += p.vx;
                 p.y += p.vy;
 
+                // Touch Repulsion
+                if (touch.x !== null) {
+                    const dx = p.x - touch.x;
+                    const dy = p.y - touch.y;
+                    const distSq = dx * dx + dy * dy;
+                    if (distSq < touch.radius ** 2) {
+                        const dist = Math.sqrt(distSq);
+                        const force = (touch.radius - dist) / touch.radius; // 0 to 1
+                        const strength = 4; // Push strength
+                        if (dist > 0) {
+                            p.x += (dx / dist) * force * strength;
+                            p.y += (dy / dist) * force * strength;
+                        }
+                    }
+                }
+
                 if (p.x < 0 || p.x > width) p.vx *= -1;
                 if (p.y < 0 || p.y > height) p.vy *= -1;
+            });
 
-                ctx.beginPath();
+            // 2. Batch Draw Particles (One fill call)
+            ctx.fillStyle = 'rgba(139, 92, 246, 0.5)';
+            ctx.beginPath();
+            particles.forEach((p) => {
+                ctx.moveTo(p.x + p.size, p.y);
                 ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-                ctx.fill();
+            });
+            ctx.fill();
 
+            // 3. Batch Draw Connections (One stroke call)
+            ctx.strokeStyle = 'rgba(139, 92, 246, 0.15)';
+            ctx.beginPath();
+            for (let i = 0; i < particles.length; i++) {
+                const p = particles[i];
                 for (let j = i + 1; j < particles.length; j++) {
                     const p2 = particles[j];
                     const dx = p.x - p2.x;
                     const dy = p.y - p2.y;
-                    const dist = Math.sqrt(dx * dx + dy * dy);
+                    // Optimization: Use squared distance to avoid expensive Math.sqrt
+                    const distSq = dx * dx + dy * dy;
 
-                    if (dist < 120) {
-                        ctx.beginPath();
+                    if (distSq < 14400) { // 120 * 120
                         ctx.moveTo(p.x, p.y);
                         ctx.lineTo(p2.x, p2.y);
-                        ctx.stroke();
                     }
                 }
-            });
+            }
+            ctx.stroke();
+
             requestAnimationFrame(animate);
         }
 
